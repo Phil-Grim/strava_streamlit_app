@@ -59,10 +59,8 @@ streamlit.slider(
     value=[min_date, max_date]
 )
 
-streamlit.slider('Example', 0, 130, (25, 75))
+filtered_data = [row for row in activities if datetime.strptime(row['Date'], '%Y-%m-%d') >= start_time[0] and datetime.strptime(row['date'], '%Y-%m-%d') <= start_time[1]]
 
-# filtered_data = [row for row in activities if datetime.strptime(row['Date'], '%Y-%m-%d') >= start_time[0] and datetime.strptime(row['date'], '%Y-%m-%d') <= start_time[1]]
-
-streamlit.header("JSON strava data")
-streamlit.dataframe(activities)
-# streamlit.dataframe(filtered_data)
+streamlit.header("Filtered Table")
+# streamlit.dataframe(activities)
+streamlit.dataframe(filtered_data)
