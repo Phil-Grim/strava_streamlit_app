@@ -109,7 +109,7 @@ filtered_data['Max Speed (min/km)'] = formatted_max_speed
 filtered_data['Moving Time'] = formatted_moving_time
 
 current_week_cleaned = filtered_data[['Name', 'Date', 'Distance', 'Moving Time', 'Elevation Gain', 'Average Speed (min/km)', 'Max Speed (min/km)', 'Average HR', 'Max HR']]
-current_week_cleaned = activities.loc[(activities['Date'] >= start_time[0]) & (activities['Date'] <= start_time[1])]
+current_week_cleaned = current_week_cleaned.loc[(activities['Date'] >= start_time[0]) & (activities['Date'] <= start_time[1])]
 
 streamlit.header("Cleaned Table!")
 streamlit.text("Also filtered using the slider at the top")
