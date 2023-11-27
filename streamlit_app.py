@@ -167,4 +167,4 @@ except:
 streamlit.header("Headline numbers from filtered date range!")
 streamlit.write('Over the selected period, you ran for a total of:', str(time_running))
 streamlit.write('You ran', week_distance, 'kms in the specified date range')
-streamlit.write('Your average pace over this period was:', ave_pace)
+streamlit.write('Your average pace over this period was:', ave_pace, 'mins/km')
