@@ -60,6 +60,7 @@ start_time = streamlit.slider(
 )
 
 # filtered_data = activities.loc[((datetime.strptime(activities['Date'], '%Y-%m-%d') >= start_time[0]) and (datetime.strptime(activities['Date'], '%Y-%m-%d') <= start_time[1])]
+activities['Date'] = pd.to_datetime(activities['Date'], format='%Y-%m-%d')
 filtered_data = activities.loc[(activities['Date'] >= start_time[0]) & (activities['Date'] <= start_time[1])]
 
 streamlit.header("Filtered Table")
