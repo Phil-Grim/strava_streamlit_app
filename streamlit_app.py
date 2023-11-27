@@ -32,7 +32,7 @@ date_distance_list = []
 count = 0
 for i in data:
     if i['sport_type'] == 'Run':
-        date_distance_list.append([i['id'], i['name'], datetime.strptime(i['start_date'][:10],'%Y-%m-%d'), i['distance'], i['moving_time'], i['total_elevation_gain'], i['end_latlng'], i['average_speed'], i['max_speed']])
+        date_distance_list.append([i['id'], i['name'], i['start_date'][:10], i['distance'], i['moving_time'], i['total_elevation_gain'], i['end_latlng'], i['average_speed'], i['max_speed']])
         try:
             date_distance_list[count].append(i['average_heartrate'])
             date_distance_list[count].append(i['max_heartrate'])
@@ -46,11 +46,11 @@ activities.sort_values(by='Date', inplace=True)
 activities['Distance'] = pd.to_numeric(activities['Distance'])
 activities['Distance'] = activities['Distance']/1000
 
-# min_date = activities['Date'].iloc[0]
-# max_date = activities['Date'].iloc[-1]
+min_date = datetime.strptime(activities['Date'].iloc[0],'%Y-%m-%d')
+max_date = datetime.strptime(activities['Date'].iloc[-1],'%Y-%m-%d')
 
-min_date = datetime(2022,1,1)
-max_date = datetime(2023,7,1)
+# min_date = datetime(2022,1,1)
+# max_date = datetime(2023,7,1)
 
 streamlit.slider(
     "Date picker",
