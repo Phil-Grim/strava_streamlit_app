@@ -120,7 +120,13 @@ streamlit.dataframe(current_week_cleaned)
 #######################################
 
 week_distance = current_week_cleaned['Distance'].sum()
-week_distance
+
+try:
+    ave_pace = time_running / week_distance
+    ave_pace = str(ave_pace)[3:7]
+except:
+    ave_pace = 'N/A'
 
 streamlit.header("Headline numbers from filtered date range!")
 streamlit.write('You ran', week_distance, 'kms in the specified date range')
+streamlit.write('Your average pace over this period was:', ave_pace)
