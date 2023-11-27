@@ -49,8 +49,8 @@ activities['Distance'] = activities['Distance']/1000
 # min_date = activities['Date'].iloc[0]
 # max_date = activities['Date'].iloc[-1]
 
-min_date = datetime.datetime(2022,1,1)
-max_date = datetime.datetime(2023,7,1)
+min_date = datetime(2022,1,1)
+max_date = datetime(2023,7,1)
 
 streamlit.slider(
     "Date picker",
