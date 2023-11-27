@@ -49,10 +49,11 @@ activities['Distance'] = activities['Distance']/1000
 min_date = activities['Date'].iloc[0]
 max_date = activities['Date'].iloc[-1]
 
-start_time = streamlit.slider(
+streamlit.slider(
     "Date picker",
-    min_value=min_date,
-    max_value=max_date
+    min_date,
+    max_date,
+    format="MM/DD/YY"
 )
 
 streamlit.slider('Example', 0, 130, (25, 75))
