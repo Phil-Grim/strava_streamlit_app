@@ -66,3 +66,78 @@ filtered_data = activities.loc[(activities['Date'] >= start_time[0]) & (activiti
 streamlit.header("Filtered Table")
 # streamlit.dataframe(activities)
 streamlit.dataframe(filtered_data)
+
+
+#######################################
+########### Cleaning Table
+#######################################
+
+# functions to format average speed to a minutes / seconds format
+def frac(n):
+    i = int(n)
+    f = round((n - int(n)), 4)
+    return (i, f)
+
+def frmt(min):
+    minutes, _sec = frac(min)
+    seconds, _msecs = frac(_sec*60)
+    if seconds > 9:
+        return "%s:%s"%(minutes, seconds)
+    else:
+        return "%s:0%s"%(minutes, seconds)
+
+filtered_data['Moving Time'] = filtered_data['Moving Time']/60 # moving time is now in mins
+filtered_data['Average Speed'] = 1/(filtered_data['Average Speed']*(60/1000))
+current_week['Max Speed'] = 1/(filtered_data['Max Speed']*(60/1000))
+filtered_data['Distance (km)'] = filtered_data['Distance']
+
+# Using above functions to format ave/max speed and moving time
+formatted_speed = []
+for index, row in filtered_data.iterrows():
+    formatted_speed.append(frmt(row['Average Speed']))
+
+formatted_max_speed = []
+for index, row in filtered_data.iterrows():
+    formatted_max_speed.append(frmt(row['Max Speed']))
+    
+formatted_moving_time = []
+for index, row in filtered_data.iterrows():
+    formatted_moving_time.append(frmt(row['Moving Time']))
+
+filtered_data['Average Speed (min/km)'] = formatted_speed
+filtered_data['Max Speed (min/km)'] = formatted_max_speed
+filtered_data['Moving Time'] = formatted_moving_time
+
+current_week_cleaned = filtered_data[['Name', 'Date', 'Distance', 'Moving Time', 'Elevation Gain', 'Average Speed (min/km)', 'Max Speed (min/km)', 'Average HR', 'Max HR']]
+
+streamlit.dataframe(current_week_cleaned)
+
+#######################################
+########### ADDING SOME HEADLINE NUMBERS
+#######################################
+
+# from datetime import timedelta
+# import datetime
+
+# filtered_data['Time'] = pd.to_datetime(current_week['Moving Time'], format='%M:%S').dt.time
+
+
+# time_running = datetime.timedelta()
+# for i in current_week['Moving Time']: # has to be done for the string
+#     (m, s) = i.split(':')
+#     d = datetime.timedelta(minutes=int(m), seconds=int(s))
+#     time_running += d
+# str(time_running)
+
+# # Finding distance
+
+# week_distance = current_week['Distance'].sum()
+# week_distance
+
+# # Finding average pace
+
+# try:
+#     ave_pace = time_running / week_distance
+#     ave_pace = str(ave_pace)[3:7]
+# except:
+#     ave_pace = 'N/A'
