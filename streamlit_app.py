@@ -88,7 +88,7 @@ def frmt(min):
 
 filtered_data['Moving Time'] = filtered_data['Moving Time']/60 # moving time is now in mins
 filtered_data['Average Speed'] = 1/(filtered_data['Average Speed']*(60/1000))
-current_week['Max Speed'] = 1/(filtered_data['Max Speed']*(60/1000))
+filtered_data['Max Speed'] = 1/(filtered_data['Max Speed']*(60/1000))
 filtered_data['Distance (km)'] = filtered_data['Distance']
 
 # Using above functions to format ave/max speed and moving time
