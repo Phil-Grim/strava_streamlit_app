@@ -48,7 +48,7 @@ def strava_json_to_df():
     activities.sort_values(by='Date', inplace=True)
     activities['Distance'] = pd.to_numeric(activities['Distance'])
     activities['Distance'] = activities['Distance']/1000
-    return activities
+    streamlit.dataframe(activities)
 
 activities = strava_json_to_df()
 
