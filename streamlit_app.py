@@ -119,28 +119,31 @@ streamlit.dataframe(current_week_cleaned)
 ########### ADDING SOME HEADLINE NUMBERS
 #######################################
 
-# from datetime import timedelta
-# import datetime
+from datetime import timedelta
+import datetime
 
-# filtered_data['Time'] = pd.to_datetime(current_week['Moving Time'], format='%M:%S').dt.time
+current_week_cleaned['Time'] = pd.to_datetime(current_week_cleaned['Moving Time'], format='%M:%S').dt.time
 
 
-# time_running = datetime.timedelta()
-# for i in current_week['Moving Time']: # has to be done for the string
-#     (m, s) = i.split(':')
-#     d = datetime.timedelta(minutes=int(m), seconds=int(s))
-#     time_running += d
-# str(time_running)
+time_running = datetime.timedelta()
+for i in current_week_cleaned['Moving Time']: # has to be done for the string
+    (m, s) = i.split(':')
+    d = datetime.timedelta(minutes=int(m), seconds=int(s))
+    time_running += d
+str(time_running)
 
-# # Finding distance
+# Finding distance
 
-# week_distance = current_week['Distance'].sum()
-# week_distance
+week_distance = current_week_cleaned['Distance'].sum()
+week_distance
 
-# # Finding average pace
+# Finding average pace
 
-# try:
-#     ave_pace = time_running / week_distance
-#     ave_pace = str(ave_pace)[3:7]
-# except:
-#     ave_pace = 'N/A'
+try:
+    ave_pace = time_running / week_distance
+    ave_pace = str(ave_pace)[3:7]
+except:
+    ave_pace = 'N/A'
+
+streamlit.header("Headline numbers from filtered date range!")
+streamlit.write('You can for', str(time_running), 'in the specified date range')
