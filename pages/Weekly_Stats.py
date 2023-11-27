@@ -1,5 +1,6 @@
 import streamlit
-from streamlit_app import displayText, strava_json_to_df
+from streamlit_app import displayText
+from streamlit_app import strava_json_to_df
 
 displayText()
 
