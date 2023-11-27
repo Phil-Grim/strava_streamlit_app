@@ -59,7 +59,8 @@ start_time = streamlit.slider(
     value=[min_date, max_date]
 )
 
-filtered_data = [row for row in activities if datetime.strptime(row['Date'], '%Y-%m-%d') >= start_time[0] and datetime.strptime(row['date'], '%Y-%m-%d') <= start_time[1]]
+# filtered_data = activities.loc[((datetime.strptime(activities['Date'], '%Y-%m-%d') >= start_time[0]) and (datetime.strptime(activities['Date'], '%Y-%m-%d') <= start_time[1])]
+filtered_data = activities.loc[(activities['Date'] >= start_time[0]) & (activities['Date'] <= start_time[1])]
 
 streamlit.header("Filtered Table")
 # streamlit.dataframe(activities)
