@@ -146,4 +146,4 @@ except:
     ave_pace = 'N/A'
 
 streamlit.header("Headline numbers from filtered date range!")
-streamlit.write('You can for', str(time_running), 'in the specified date range')
+# streamlit.write('You can for', str(time_running), 'in the specified date range')
