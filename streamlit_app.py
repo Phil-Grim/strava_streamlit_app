@@ -142,7 +142,6 @@ for i in current_week_cleaned['Moving Time']:
     else:
         time = '00:' + str(m) + ':' + str(s)
         new_moving_times.append(time)
-new_moving_times
 
 current_week_cleaned['Cleaned Moving Time'] = new_moving_times
 
