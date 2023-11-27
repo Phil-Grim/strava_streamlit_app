@@ -6,6 +6,9 @@ from datetime import datetime, timedelta
 auth_url = "https://www.strava.com/oauth/token"
 
 
+def displayText():
+    streamlit.write("This is me, I am this")
+
 payload = {
     'client_id': "106698",
     'client_secret': 'a66bb23d9597d2b4027ff22a73720f226d021f68',
