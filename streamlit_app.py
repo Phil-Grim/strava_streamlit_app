@@ -46,14 +46,13 @@ activities.sort_values(by='Date', inplace=True)
 activities['Distance'] = pd.to_numeric(activities['Distance'])
 activities['Distance'] = activities['Distance']/1000
 
-min_date = activities['Date'].iloc[0]
-max_date = activities['Date'].iloc[-1]
+min_date = activities['ID'].iloc[0]
+max_date = activities['ID'].iloc[-1]
 
 streamlit.slider(
     "Date picker",
     min_date,
-    max_date,
-    format="MM/DD/YY"
+    max_date
 )
 
 streamlit.slider('Example', 0, 130, (25, 75))
