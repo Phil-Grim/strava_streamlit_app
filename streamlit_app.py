@@ -53,7 +53,7 @@ streamlit.slider(
     "Date picker",
     min_date,
     max_date,
-    value[min_date, max_date]
+    value=[min_date, max_date]
 )
 
 streamlit.slider('Example', 0, 130, (25, 75))
