@@ -52,7 +52,7 @@ max_date = datetime.strptime(activities['Date'].iloc[-1],'%Y-%m-%d')
 # min_date = datetime(2022,1,1)
 # max_date = datetime(2023,7,1)
 
-streamlit.slider(
+start_time = streamlit.slider(
     "Date picker",
     min_date,
     max_date,
