@@ -49,16 +49,15 @@ activities['Distance'] = activities['Distance']/1000
 min_date = activities['Date'].iloc[0]
 max_date = activities['Date'].iloc[-1]
 
-start_time = streamlit.sidebar.slider(
+start_time = streamlit.slider(
     "Date picker",
     min_value=min_date,
     max_value=max_date,
-    value=[min_date, max_date],
-    format="MM/DD/YY"
+    value=[min_date, max_date]
 )
 
-filtered_data = [row for row in activities if datetime.strptime(row['Date'], '%Y-%m-%d') >= start_time[0] and datetime.strptime(row['date'], '%Y-%m-%d') <= start_time[1]]
+# filtered_data = [row for row in activities if datetime.strptime(row['Date'], '%Y-%m-%d') >= start_time[0] and datetime.strptime(row['date'], '%Y-%m-%d') <= start_time[1]]
 
 streamlit.header("JSON strava data")
 streamlit.dataframe(activities)
-streamlit.dataframe(filtered_data)
+# streamlit.dataframe(filtered_data)
