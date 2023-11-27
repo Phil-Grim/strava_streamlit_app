@@ -46,18 +46,18 @@ activities.sort_values(by='Date', inplace=True)
 activities['Distance'] = pd.to_numeric(activities['Distance'])
 activities['Distance'] = activities['Distance']/1000
 
-# min_date = activities[0]['Date']
-# max_date = activities[-1]['Date']
+min_date = activities[0]['Date']
+max_date = activities[-1]['Date']
 
-# start_time = st.sidebar.slider(
-#     "Date picker",
-#     min_value=min_date,
-#     max_value=max_date,
-#     value=[min_date, max_date],
-#     format="MM/DD/YY"
-# )
+start_time = st.sidebar.slider(
+    "Date picker",
+    min_value=min_date,
+    max_value=max_date,
+    value=[min_date, max_date],
+    format="MM/DD/YY"
+)
 
-# filtered_data = [row for row in result if datetime.strptime(row['date'], '%Y-%m-%d') >= start_time[0] and datetime.strptime(row['date'], '%Y-%m-%d') <= start_time[1]]
+filtered_data = [row for row in result if datetime.strptime(row['date'], '%Y-%m-%d') >= start_time[0] and datetime.strptime(row['date'], '%Y-%m-%d') <= start_time[1]]
 
 streamlit.header("JSON strava data")
 streamlit.dataframe(activities)
