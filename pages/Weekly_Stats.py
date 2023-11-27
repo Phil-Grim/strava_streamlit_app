@@ -1,8 +1,9 @@
 import streamlit
-from streamlit_app import displayText
+import streamlit_app
+# from streamlit_app import displayText
 # from streamlit_app import strava_json_to_df
 
-displayText()
+streamlit_app.displayText()
 
-# df = strava_json_to_df()
-# streamlit.dataframe(df)
+df = streamlit_app.strava_json_to_df()
+streamlit.dataframe(df)
