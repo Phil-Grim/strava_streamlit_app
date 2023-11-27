@@ -46,8 +46,8 @@ activities.sort_values(by='Date', inplace=True)
 activities['Distance'] = pd.to_numeric(activities['Distance'])
 activities['Distance'] = activities['Distance']/1000
 
-min_date = activities['Date'][0]
-max_date = activities['Date'][-1]
+min_date = activities['Date'].iloc[0]
+max_date = activities['Date'].iloc[-1]
 
 start_time = st.sidebar.slider(
     "Date picker",
