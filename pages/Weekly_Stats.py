@@ -11,4 +11,4 @@ streamlit_app.displayText()
 # try putting functions in same directory (i.e. pages)
 
 streamlit_app.strava_json_to_df()
-# streamlit.dataframe(df)
+streamlit.dataframe(df)
