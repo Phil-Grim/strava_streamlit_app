@@ -49,10 +49,11 @@ activities['Distance'] = activities['Distance']/1000
 min_date = activities['ID'].iloc[0]
 max_date = activities['ID'].iloc[-1]
 
-streamlit.sidebar.slider(
+streamlit.slider(
     "Date picker",
     min_date,
-    max_date
+    max_date,
+    value[min_date, max_date]
 )
 
 streamlit.slider('Example', 0, 130, (25, 75))
