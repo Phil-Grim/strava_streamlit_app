@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+from datetime import datetime, timedelta
 
 auth_url = "https://www.strava.com/oauth/token"
 
