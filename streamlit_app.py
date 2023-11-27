@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 def displayText():
     streamlit.write("This is a test")
 
-def strava_json_to_df()
+def strava_json_to_df():
     auth_url = "https://www.strava.com/oauth/token"
 
     payload = {
