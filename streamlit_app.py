@@ -119,7 +119,7 @@ streamlit.dataframe(current_week_cleaned)
 ########### ADDING SOME HEADLINE NUMBERS
 #######################################
 
-week_distance = current_week_cleaned['Distance'].sum()
+week_distance = round(current_week_cleaned['Distance'].sum(), 1)
 
 try:
     ave_pace = time_running / week_distance
