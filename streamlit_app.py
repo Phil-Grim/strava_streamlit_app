@@ -121,6 +121,44 @@ streamlit.dataframe(current_week_cleaned)
 
 week_distance = round(current_week_cleaned['Distance'].sum(), 1)
 
+# Getting time moving was trickier
+
+new_moving_times = []
+for i in current_week_cleaned['Moving Time']:
+    (m,s) = i.split(':')
+    if int(m) >= 60:
+        if (int(m) - 60) < 60:
+            m = int(m) - 60
+            if len(str(m)) == 1:
+                m = '0' + str(m)
+            time = '01' + ':' + str(m) + ':' + str(s)
+            new_moving_times.append(time)
+        elif (int(m) - 60) < 120:
+            m = int(m) - 120
+            if len(str(m)) == 1:
+                m = '0' + str(m)
+            time = '02' + ':' + str(m) + ':' + str(s)
+            new_moving_times.append(time)
+    else:
+        time = '00:' + str(m) + ':' + str(s)
+        new_moving_times.append(time)
+new_moving_times
+
+current_week_cleaned['Cleaned Moving Time'] = new_moving_times
+
+from datetime import timedelta
+import datetime   
+
+current_week_cleaned['Time'] = pd.to_datetime(current_week_cleaned['Cleaned Moving Time'], format='%H:%M:%S').dt.time
+
+time_running = datetime.timedelta()
+for i in current_week_cleaned['Cleaned Moving Time']: # has to be done for the string
+    (h, m, s) = i.split(':')
+    d = datetime.timedelta(hours=int(h), minutes=int(m), seconds=int(s))
+    time_running += d
+
+# ave pace
+
 try:
     ave_pace = time_running / week_distance
     ave_pace = str(ave_pace)[3:7]
@@ -128,5 +166,6 @@ except:
     ave_pace = 'N/A'
 
 streamlit.header("Headline numbers from filtered date range!")
+streamlit.write('Over the selected period, you ran for a total of:', str(time_running))
 streamlit.write('You ran', week_distance, 'kms in the specified date range')
 streamlit.write('Your average pace over this period was:', ave_pace)
