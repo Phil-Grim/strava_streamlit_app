@@ -1,4 +1,5 @@
 import requests
+import pandas as pd
 
 auth_url = "https://www.strava.com/oauth/token"
 
@@ -25,4 +26,20 @@ param = {'per_page': 200, 'page': 1}
 
 data = requests.get(activities_url, headers=header, params=param).json()
 
-data
+date_distance_list = []
+count = 0
+for i in data:
+    if i['sport_type'] == 'Run':
+        date_distance_list.append([i['id'], i['name'], datetime.strptime(i['start_date'][:10],'%Y-%m-%d'), i['distance'], i['moving_time'], i['total_elevation_gain'], i['end_latlng'], i['average_speed'], i['max_speed']])
+        try:
+            date_distance_list[count].append(i['average_heartrate'])
+            date_distance_list[count].append(i['max_heartrate'])
+        except:
+            date_distance_list[count].append('None')
+            date_distance_list[count].append('None')
+        count += 1
+
+activities = pd.DataFrame(date_distance_list, columns = ['ID', 'Name', 'Date', 'Distance', 'Moving Time', 'Elevation Gain', 'End Location', 'Average Speed', 'Max Speed', 'Average HR', 'Max HR'])
+
+streamlit.header("JSON strava data")
+streamlit.dataframe(activities)
