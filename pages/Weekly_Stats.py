@@ -5,7 +5,7 @@ import pandas as pd
 from datetime import timedelta
 from matplotlib import pyplot as plt
 
-streamlit_app.displayText()
+# streamlit_app.displayText()
 
 
 
@@ -38,6 +38,7 @@ ax = plt.tick_params(top=False, bottom=False, left=False, right=False, labelleft
 ax = plt.xlabel('Day of the Week', fontsize='x-large')
 ax = plt.ylabel('KMs covered', fontsize='x-large')
 
+streamlit.header('Weekly KMs Covered')
 streamlit.pyplot(fig)
 
 
