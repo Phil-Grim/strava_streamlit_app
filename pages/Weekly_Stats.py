@@ -35,6 +35,8 @@ ax = plt.bar(current_week_summed['Date'],current_week_summed['Distance'], color=
 ax = plt.xticks(current_week_summed['Date'], ('M', 'T', 'W', 'T', 'F', 'S', 'S'), **csfont)
 ax = plt.yticks(**csfont)
 ax = plt.tick_params(top=False, bottom=False, left=False, right=False, labelleft=True, labelbottom=True, labelsize=15)
+ax = plt.xlabel('Day of the Week', fontsize='x-large')
+ax = plt.ylabel('KMs covered', fontsize='x-large')
 
 streamlit.pyplot(fig)
 
