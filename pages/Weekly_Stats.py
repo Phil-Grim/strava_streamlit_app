@@ -36,7 +36,7 @@ plt.yticks(**csfont)
 plt.tick_params(top=False, bottom=False, left=False, right=False, labelleft=True, labelbottom=True, labelsize=15)
 plt.box(False)
 
-streamlit.plt(fig)
+streamlit.pyplot(fig)
 
 
 
