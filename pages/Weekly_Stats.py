@@ -2,6 +2,7 @@ import streamlit
 import streamlit_app
 import requests
 import pandas as pd
+from datetime import timedelta
 from matplotlib import pyplot as plt
 
 streamlit_app.displayText()
