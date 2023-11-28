@@ -23,7 +23,7 @@ end_week = start_week + timedelta(6)
 # create data frame with data from current week only and set dates with no activity to distance = 0
 r = pd.date_range(start=start_week, end=end_week).date
 
-
+df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d')
 current_week = df[df['Date'].dt.date >= start_week]
 current_week['Date'] = current_week['Date'].dt.date
 
