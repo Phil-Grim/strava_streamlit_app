@@ -30,11 +30,11 @@ current_week['Date'] = current_week['Date'].dt.date
 current_week_summed = current_week.groupby(pd.Grouper(key='Date')).sum().reindex(r).fillna(0.0).rename_axis('Date').reset_index()
 
 csfont = {'fontname':'Avenir'}
-fig = plt.bar(current_week_summed['Date'],current_week_summed['Distance'], color= '#49494f')
-plt.xticks(current_week_summed['Date'], ('M', 'T', 'W', 'T', 'F', 'S', 'S'), **csfont)
-plt.yticks(**csfont)
-plt.tick_params(top=False, bottom=False, left=False, right=False, labelleft=True, labelbottom=True, labelsize=15)
-plt.box(False)
+fig, ax = plt.subplots()
+ax = plt.bar(current_week_summed['Date'],current_week_summed['Distance'], color= '#49494f')
+ax = plt.xticks(current_week_summed['Date'], ('M', 'T', 'W', 'T', 'F', 'S', 'S'), **csfont)
+ax = plt.yticks(**csfont)
+ax = plt.tick_params(top=False, bottom=False, left=False, right=False, labelleft=True, labelbottom=True, labelsize=15)
 
 streamlit.pyplot(fig)
 
